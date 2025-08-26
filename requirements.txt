@@ -3,5 +3,11 @@ pandas
 numpy
 pymongo
 certifi
-
+pymongo[srv]==3.6
+pymongo
+ipykernel
+matplotlib
+seaborn
+openpyxl
+statsmodels
 #-e .
