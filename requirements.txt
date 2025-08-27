@@ -10,4 +10,5 @@ matplotlib
 seaborn
 openpyxl
 statsmodels
+scikit-learn
 #-e .
