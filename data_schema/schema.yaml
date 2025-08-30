@@ -1,0 +1,242 @@
+COLUMNS:
+  - ColumnName: PROSPECTID
+    DataType: int64
+  - ColumnName: Total_TL
+    DataType: int64
+  - ColumnName: Tot_Closed_TL
+    DataType: int64
+  - ColumnName: Tot_Active_TL
+    DataType: int64
+  - ColumnName: Total_TL_opened_L6M
+    DataType: int64
+  - ColumnName: Tot_TL_closed_L6M
+    DataType: int64
+  - ColumnName: pct_tl_open_L6M
+    DataType: float64
+  - ColumnName: pct_tl_closed_L6M
+    DataType: float64
+  - ColumnName: pct_active_tl
+    DataType: float64
+  - ColumnName: pct_closed_tl
+    DataType: float64
+  - ColumnName: Total_TL_opened_L12M
+    DataType: int64
+  - ColumnName: Tot_TL_closed_L12M
+    DataType: int64
+  - ColumnName: pct_tl_open_L12M
+    DataType: float64
+  - ColumnName: pct_tl_closed_L12M
+    DataType: float64
+  - ColumnName: Tot_Missed_Pmnt
+    DataType: int64
+  - ColumnName: Auto_TL
+    DataType: int64
+  - ColumnName: CC_TL
+    DataType: int64
+  - ColumnName: Consumer_TL
+    DataType: int64
+  - ColumnName: Gold_TL
+    DataType: int64
+  - ColumnName: Home_TL
+    DataType: int64
+  - ColumnName: PL_TL
+    DataType: int64
+  - ColumnName: Secured_TL
+    DataType: int64
+  - ColumnName: Unsecured_TL
+    DataType: int64
+  - ColumnName: Other_TL
+    DataType: int64
+  - ColumnName: Age_Oldest_TL
+    DataType: int64
+  - ColumnName: Age_Newest_TL
+    DataType: int64
+  - ColumnName: time_since_recent_payment
+    DataType: int64
+  - ColumnName: num_times_delinquent
+    DataType: int64
+  - ColumnName: max_recent_level_of_deliq
+    DataType: int64
+  - ColumnName: num_deliq_6mts
+    DataType: int64
+  - ColumnName: num_deliq_12mts
+    DataType: int64
+  - ColumnName: num_deliq_6_12mts
+    DataType: int64
+  - ColumnName: num_times_30p_dpd
+    DataType: int64
+  - ColumnName: num_times_60p_dpd
+    DataType: int64
+  - ColumnName: num_std
+    DataType: int64
+  - ColumnName: num_std_6mts
+    DataType: int64
+  - ColumnName: num_std_12mts
+    DataType: int64
+  - ColumnName: num_sub
+    DataType: int64
+  - ColumnName: num_sub_6mts
+    DataType: int64
+  - ColumnName: num_sub_12mts
+    DataType: int64
+  - ColumnName: num_dbt
+    DataType: int64
+  - ColumnName: num_dbt_6mts
+    DataType: int64
+  - ColumnName: num_dbt_12mts
+    DataType: int64
+  - ColumnName: num_lss
+    DataType: int64
+  - ColumnName: num_lss_6mts
+    DataType: int64
+  - ColumnName: num_lss_12mts
+    DataType: int64
+  - ColumnName: recent_level_of_deliq
+    DataType: int64
+  - ColumnName: tot_enq
+    DataType: int64
+  - ColumnName: CC_enq
+    DataType: int64
+  - ColumnName: CC_enq_L6m
+    DataType: int64
+  - ColumnName: CC_enq_L12m
+    DataType: int64
+  - ColumnName: PL_enq
+    DataType: int64
+  - ColumnName: PL_enq_L6m
+    DataType: int64
+  - ColumnName: PL_enq_L12m
+    DataType: int64
+  - ColumnName: time_since_recent_enq
+    DataType: int64
+  - ColumnName: enq_L12m
+    DataType: int64
+  - ColumnName: enq_L6m
+    DataType: int64
+  - ColumnName: enq_L3m
+    DataType: int64
+  - ColumnName: MARITALSTATUS
+    DataType: object
+  - ColumnName: EDUCATION
+    DataType: object
+  - ColumnName: AGE
+    DataType: int64
+  - ColumnName: GENDER
+    DataType: object
+  - ColumnName: NETMONTHLYINCOME
+    DataType: int64
+  - ColumnName: Time_With_Curr_Empr
+    DataType: int64
+  - ColumnName: pct_of_active_TLs_ever
+    DataType: float64
+  - ColumnName: pct_opened_TLs_L6m_of_L12m
+    DataType: float64
+  - ColumnName: pct_currentBal_all_TL
+    DataType: float64
+  - ColumnName: CC_Flag
+    DataType: int64
+  - ColumnName: PL_Flag
+    DataType: int64
+  - ColumnName: pct_PL_enq_L6m_of_L12m
+    DataType: float64
+  - ColumnName: pct_CC_enq_L6m_of_L12m
+    DataType: float64
+  - ColumnName: pct_PL_enq_L6m_of_ever
+    DataType: float64
+  - ColumnName: pct_CC_enq_L6m_of_ever
+    DataType: float64
+  - ColumnName: HL_Flag
+    DataType: int64
+  - ColumnName: GL_Flag
+    DataType: int64
+  - ColumnName: last_prod_enq2
+    DataType: object
+  - ColumnName: first_prod_enq2
+    DataType: object
+  - ColumnName: Credit_Score
+    DataType: int64
+  - ColumnName: Approved_Flag
+    DataType: object
+
+NUMERICAL_COLUMNS:
+  - PROSPECTID
+  - Total_TL
+  - Tot_Closed_TL
+  - Tot_Active_TL
+  - Total_TL_opened_L6M
+  - Tot_TL_closed_L6M
+  - pct_tl_open_L6M
+  - pct_tl_closed_L6M
+  - pct_active_tl
+  - pct_closed_tl
+  - Total_TL_opened_L12M
+  - Tot_TL_closed_L12M
+  - pct_tl_open_L12M
+  - pct_tl_closed_L12M
+  - Tot_Missed_Pmnt
+  - Auto_TL
+  - CC_TL
+  - Consumer_TL
+  - Gold_TL
+  - Home_TL
+  - PL_TL
+  - Secured_TL
+  - Unsecured_TL
+  - Other_TL
+  - Age_Oldest_TL
+  - Age_Newest_TL
+  - time_since_recent_payment
+  - num_times_delinquent
+  - max_recent_level_of_deliq
+  - num_deliq_6mts
+  - num_deliq_12mts
+  - num_deliq_6_12mts
+  - num_times_30p_dpd
+  - num_times_60p_dpd
+  - num_std
+  - num_std_6mts
+  - num_std_12mts
+  - num_sub
+  - num_sub_6mts
+  - num_sub_12mts
+  - num_dbt
+  - num_dbt_6mts
+  - num_dbt_12mts
+  - num_lss
+  - num_lss_6mts
+  - num_lss_12mts
+  - recent_level_of_deliq
+  - tot_enq
+  - CC_enq
+  - CC_enq_L6m
+  - CC_enq_L12m
+  - PL_enq
+  - PL_enq_L6m
+  - PL_enq_L12m
+  - time_since_recent_enq
+  - enq_L12m
+  - enq_L6m
+  - enq_L3m
+  - AGE
+  - NETMONTHLYINCOME
+  - Time_With_Curr_Empr
+  - pct_of_active_TLs_ever
+  - pct_opened_TLs_L6m_of_L12m
+  - pct_currentBal_all_TL
+  - CC_Flag
+  - PL_Flag
+  - pct_PL_enq_L6m_of_L12m
+  - pct_CC_enq_L6m_of_L12m
+  - pct_PL_enq_L6m_of_ever
+  - pct_CC_enq_L6m_of_ever
+  - HL_Flag
+  - GL_Flag
+  - Credit_Score
+
+CATEGORICAL_COLUMNS:
+  - MARITALSTATUS
+  - EDUCATION
+  - GENDER
+  - last_prod_enq2
+  - first_prod_enq2
+  - Approved_Flag
