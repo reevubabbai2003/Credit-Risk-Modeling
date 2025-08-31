@@ -6,7 +6,7 @@ import pandas as pd
 """
 defining common constant variable for training pipeline
 """
-TARGET_COLUMN = "Result"
+TARGET_COLUMN = "Approved_Flag"
 PIPELINE_NAME: str = "CreditDefault"
 ARTIFACT_DIR: str = "Artifacts"
 FILE_NAME: str = "merged_data.csv"
@@ -47,12 +47,6 @@ DATA_TRANSFORMATION_DIR_NAME: str = "data_transformation"
 DATA_TRANSFORMATION_TRANSFORMED_DATA_DIR: str = "transformed"
 DATA_TRANSFORMATION_TRANSFORMED_OBJECT_DIR: str = "transformed_object"
 
-## kkn imputer to replace nan values
-DATA_TRANSFORMATION_IMPUTER_PARAMS: dict = {
-    "missing_values": np.nan,
-    "n_neighbors": 3,
-    "weights": "uniform",
-}
 DATA_TRANSFORMATION_TRAIN_FILE_PATH: str = "train.npy"
 
 DATA_TRANSFORMATION_TEST_FILE_PATH: str = "test.npy"
