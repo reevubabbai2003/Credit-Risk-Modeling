@@ -1,4 +1,4 @@
-Credit Risk Modelling using ML Techniques
+Credit Risk Modelling Using ML Techniques
 – Developed a predictive model to categorize applicants into credit approval tiers based on their risk profile.
 – Performed feature selection with Chi-Square, ANOVA, and VIF to reduce 80+ features to the 42 most impactful features.
 – Applied Logistic Regression, SVM, Random Forest, and XGBoost model; fine-tuned model hyperparameters using CV.
