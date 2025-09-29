@@ -34,7 +34,7 @@ class Preprocessor():
 
         # Step 1: Identify column types
         self.categorical_cols_ = [col for col in X.select_dtypes(include=['object', 'category']).columns if col != TARGET_COLUMN]
-        self.numerical_cols_ = X.select_dtypes(include=np.number).columns.tolist()
+        self.numerical_cols_ = [col for col in X.columns if X[col].dtype  != 'object' and col not in ['PROSPECTID']]
 
         # Step 2: Chi-Square Tests for Feature Selection
         categorical_selected_features = []

@@ -9,7 +9,7 @@ from Credit_Risk_Default.entity.config_entity import ModelTrainerConfig
 
 
 
-from Credit_Risk_Default.utils.ml_utils.model.estimator import NetworkModel
+from Credit_Risk_Default.utils.ml_utils.model.estimator import CreditModel
 from Credit_Risk_Default.utils.main_utils.utils import save_object,load_object
 from Credit_Risk_Default.utils.main_utils.utils import load_numpy_array_data,evaluate_models
 from Credit_Risk_Default.utils.ml_utils.metric.classification_metric import get_classification_score
@@ -27,11 +27,11 @@ import mlflow
 from urllib.parse import urlparse
 
 import dagshub
-#dagshub.init(repo_owner='krishnaik06', repo_name='Credit_Risk_Default', mlflow=True)
+dagshub.init(repo_owner='reevubabai2003', repo_name='Credit-Risk-Default-Prediction', mlflow=True)
 
-os.environ["MLFLOW_TRACKING_URI"]="https://dagshub.com/krishnaik06/Credit_Risk_Default.mlflow"
-os.environ["MLFLOW_TRACKING_USERNAME"]="krishnaik06"
-os.environ["MLFLOW_TRACKING_PASSWORD"]="7104284f1bb44ece21e0e2adb4e36a250ae3251f"
+# os.environ["MLFLOW_TRACKING_URI"]="https://dagshub.com/krishnaik06/Credit_Risk_Default.mlflow"
+# os.environ["MLFLOW_TRACKING_USERNAME"]="krishnaik06"
+# os.environ["MLFLOW_TRACKING_PASSWORD"]="7104284f1bb44ece21e0e2adb4e36a250ae3251f"
 
 
 
@@ -46,14 +46,12 @@ class ModelTrainer:
             raise CreditDefaultException(e,sys)
         
     def track_mlflow(self,best_model,classificationmetric):
-        mlflow.set_registry_uri("https://dagshub.com/krishnaik06/Credit_Risk_Default.mlflow")
+        mlflow.set_registry_uri("https://dagshub.com/reevubabai2003/Credit-Risk-Default-Prediction.mlflow")
         tracking_url_type_store = urlparse(mlflow.get_tracking_uri()).scheme
         with mlflow.start_run():
             f1_score=classificationmetric.f1_score
             precision_score=classificationmetric.precision_score
             recall_score=classificationmetric.recall_score
-
-            
 
             mlflow.log_metric("f1_score",f1_score)
             mlflow.log_metric("precision",precision_score)
@@ -80,32 +78,43 @@ class ModelTrainer:
                 "Logistic Regression": LogisticRegression(verbose=1),
                 "AdaBoost": AdaBoostClassifier(),
             }
-        params={
+        params = {
             "Decision Tree": {
-                'criterion':['gini', 'entropy', 'log_loss'],
-                # 'splitter':['best','random'],
-                # 'max_features':['sqrt','log2'],
+                'criterion': ['gini', 'entropy', 'log_loss'],
+                'splitter': ['best', 'random'],
+                'max_depth': [None, 10, 20, 30, 40, 50],
+                'min_samples_split': [2, 5, 10],
+                'min_samples_leaf': [1, 2, 4],
+                'max_features': ['sqrt', 'log2', None]
             },
-            "Random Forest":{
-                # 'criterion':['gini', 'entropy', 'log_loss'],
-                
-                # 'max_features':['sqrt','log2',None],
-                'n_estimators': [8,16,32,128,256]
+            "Random Forest": {
+                'n_estimators': [32, 64, 100, 128, 200, 256],
+                'criterion': ['gini', 'entropy'],
+                'max_depth': [None, 10, 20, 30],
+                'min_samples_split': [2, 5, 10],
+                'min_samples_leaf': [1, 2, 4],
+                'max_features': ['sqrt', 'log2'],
+                'bootstrap': [True, False]
             },
-            "Gradient Boosting":{
-                # 'loss':['log_loss', 'exponential'],
-                'learning_rate':[.1,.01,.05,.001],
-                'subsample':[0.6,0.7,0.75,0.85,0.9],
-                # 'criterion':['squared_error', 'friedman_mse'],
-                # 'max_features':['auto','sqrt','log2'],
-                'n_estimators': [8,16,32,64,128,256]
+            "Gradient Boosting": {
+                'loss': ['log_loss'], 
+                'learning_rate': [0.1, 0.05, 0.01, 0.001],
+                'n_estimators': [64, 100, 128, 200, 256],
+                'subsample': [0.7, 0.8, 0.9, 1.0],
+                'max_depth': [3, 5, 8, 10],
+                'max_features': ['sqrt', 'log2']
             },
-            "Logistic Regression":{},
-            "AdaBoost":{
-                'learning_rate':[.1,.01,.001],
-                'n_estimators': [8,16,32,64,128,256]
+            "Logistic Regression": {
+                'penalty': ['l1', 'l2', 'elasticnet', None],
+                'C': [100, 10, 1.0, 0.1, 0.01],
+                'solver': ['lbfgs', 'saga'], 
+                'multi_class': ['ovr', 'multinomial']
+            },
+            "AdaBoost": {
+                'n_estimators': [32, 64, 100, 128, 200, 256],
+                'learning_rate': [1.0, 0.5, 0.1, 0.01, 0.001],
+                'algorithm': ['SAMME', 'SAMME.R']
             }
-            
         }
         model_report:dict=evaluate_models(X_train=X_train,y_train=y_train,X_test=x_test,y_test=y_test,
                                           models=models,param=params)
@@ -137,8 +146,8 @@ class ModelTrainer:
         model_dir_path = os.path.dirname(self.model_trainer_config.trained_model_file_path)
         os.makedirs(model_dir_path,exist_ok=True)
 
-        Network_Model=NetworkModel(preprocessor=preprocessor,model=best_model)
-        save_object(self.model_trainer_config.trained_model_file_path,obj=NetworkModel)
+        Network_Model=CreditModel(preprocessor=preprocessor,model=best_model)
+        save_object(self.model_trainer_config.trained_model_file_path,obj=CreditModel)
         #model pusher
         save_object("final_model/model.pkl",best_model)
         
